@@ -1,0 +1,94 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Rider
+.idea/
+*.idea/
+
+# Visual Studio
+.vs/
+
+# DotNet CLI
+artifacts/
+*.psess
+project.lock.json
+project.fragment.lock.json
+generated/
+
+# Logs
+*.log
+*.tlog
+
+# Dependency directories
+node_modules/
+packages/
+.vscode-test/
+
+# Configuration and secret files
+appsettings.json
+appsettings.*.json
+
+# Temporary and system files
+*.pid
+*.cache
+*.pdb
+*.mdb
+*.pyc
+*.class
+
+# Coverage and test results
+*.coverage
+*.coveragexml
+*.cov
+*.gcda
+*.gcno
+*.gcov
+*.lcov
+*.lst
+TestResults/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tools specific
+_ReSharper.*
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Additional for .NET
+# Uncomment if you use NuGet and don't commit `packages`
+# **/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Other
+*.nupkg
+*.snk
