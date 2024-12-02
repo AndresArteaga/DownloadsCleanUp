@@ -17,7 +17,7 @@ A small C# console application to help keep the Downloads folder clean on Window
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/DownloadsCleanUp.git
+    git clone https://github.com/AndresArteaga/DownloadsCleanUp.git
     cd DownloadsCleanUp
     ```
 
