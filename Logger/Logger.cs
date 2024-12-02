@@ -1,8 +1,13 @@
-public static class Logger
+public interface ILogger
+{
+    void Log(string message);
+}
+
+public class Logger : ILogger
 {
     private const string LogFileName = "DownloadCleanup_Log.txt";
 
-    public static void Log(string message)
+    public void Log(string message)
     {
         try
         {
