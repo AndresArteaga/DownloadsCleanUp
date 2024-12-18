@@ -1,7 +1,9 @@
-﻿internal class DownloadsCleanUp (ILogger logger)
+﻿using Microsoft.Extensions.Configuration;
+internal class DownloadsCleanUp (ILogger logger, string downloadsPath)
 {
     private const string deleteFolder = "Delete";
     private readonly ILogger log = logger;
+    private readonly string downloads = downloadsPath;
 
     private void DeleteFiles(string[] filesToDelete)
     {
@@ -39,8 +41,7 @@
 
     private void CleanUp()
     {
-        string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-        string deleteFolderPath = Path.Combine(downloadsPath, deleteFolder);
+        string deleteFolderPath = Path.Combine(downloads, deleteFolder);
         if (Directory.Exists(deleteFolderPath))
         {
             string[] files = Directory.GetFiles(deleteFolderPath);
@@ -57,8 +58,18 @@
 
     public static void Main()
     {
+        IConfiguration configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
+        IConfigurationSection settings = configuration.GetSection("Settings");
+        string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        if (!string.IsNullOrEmpty(settings["DownloadsFolder"]))
+            downloadsPath = settings["DownloadsFolder"] ?? downloadsPath;
+
         ILogger logger = new Logger();
-        DownloadsCleanUp cleanUp = new DownloadsCleanUp(logger);
+        DownloadsCleanUp cleanUp = new DownloadsCleanUp(logger, downloadsPath);
         cleanUp.CleanUp();
     }
 }
