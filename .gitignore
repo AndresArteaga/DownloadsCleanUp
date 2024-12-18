@@ -92,3 +92,6 @@ artifacts/
 # Other
 *.nupkg
 *.snk
+
+#Application logs
+DownloadCleanup_Log.txt
