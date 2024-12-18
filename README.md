@@ -5,11 +5,12 @@ A small C# console application to help keep the Downloads folder clean on Window
 ## Features
 
 - Deletes files and directories within a specified folder (default is "Delete" folder inside Downloads).
+- The "Downloads" path can be modified in the `appsettings.json` file.
 - Logs actions and errors to a log file (`DownloadCleanup_Log.txt`).
 
 ## Prerequisites
 
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) or later
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 
 ## Getting Started
 
@@ -20,6 +21,23 @@ A small C# console application to help keep the Downloads folder clean on Window
     git clone https://github.com/AndresArteaga/DownloadsCleanUp.git
     cd DownloadsCleanUp
     ```
+
+2. Create an "appsettings.json" file.
+    If you're using the default path C:\Users\YourUser\Downloads
+    ```json
+    {
+        "Settings": {
+            "DownloadsFolder": ""
+        }
+    }
+    ```
+    If you have a different Downloads path (e.g., D:\Downloads)
+    ```json
+    {
+        "Settings": {
+            "DownloadsFolder": "D:\\Downloads"
+        }
+    }
 
 2. Build the application:
     ```sh
@@ -37,7 +55,7 @@ A small C# console application to help keep the Downloads folder clean on Window
 
 1. Publish the application for Windows:
     ```sh
-    dotnet publish -c Release -r win-x64 --self-contained
+    dotnet publish -c Release -r win-x64 --self-contained true
     ```
 
 2. The published files will be located in the `bin\Release\net6.0\win-x64\publish` directory.
